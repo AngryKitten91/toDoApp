@@ -1,0 +1,18 @@
+.c {
+    &-button {
+        background-color: #4285f4;
+        padding: 10px 40px;
+        margin: 20px;
+        border-radius: 40px;
+        color: #fff;
+        box-sizing: border-box;
+        cursor: pointer;
+        text-transform: uppercase;
+        transition: 0.3s;
+        font-weight: 500;
+
+        &:hover{
+            background-color: #2277ff; 
+        }
+    }
+}

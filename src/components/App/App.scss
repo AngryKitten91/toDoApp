@@ -1,0 +1,19 @@
+.c {
+    &-container {
+        margin: 0 auto;
+        max-width: 1200px;
+        padding: 20px;
+    }
+
+    &-container-full {
+        width: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    &-app__header {
+        background: rgb(17, 58, 114);
+        background: linear-gradient(90deg, rgba(17, 58, 114, 1) 0%, rgba(99, 93, 157, 1) 100%);
+        color: #fff;
+    }
+}

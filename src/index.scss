@@ -1,0 +1,10 @@
+body{
+    font-family: "Open Sans";
+}
+
+.o {
+    &-flex {
+        display: flex;
+        justify-content: center;
+    }
+}
