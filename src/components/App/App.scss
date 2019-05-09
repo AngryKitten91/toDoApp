@@ -1,4 +1,3 @@
-
 @import "index.scss";
 
 .container {
@@ -12,14 +11,43 @@
         box-sizing: border-box;
     }
 
+    &-flex {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &-flex-space-between {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &-warning {
+        background: $color-red;
+        background: linear-gradient(90deg, $color-red 0%, $color-orange 100%);
+        color: $color-white;
+        font-weight: 600;
+    }
+
+    &-sticky {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+    }
+
     &-dark {
         background: $color-blue;
         background: linear-gradient(90deg, $color-blue 0%, $color-purple 100%);
         color: $color-white;
-    }
-    &-flex {
-        display: flex;
-        justify-content: center;
-    }
-    
+    }   
 }
+
+
+
+.m {
+    &-top-10 {
+        margin-top: 10px;
+    }
+}
+

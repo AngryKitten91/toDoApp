@@ -4,11 +4,11 @@ import './Button.scss';
 
 function Button(props) {
 
-  const {name, fn} = props
+  const {children, fn} = props
   
   return (
-    <div onClick={fn} className="button button-dark">
-      <p>{name}</p>
+    <div onClick={fn} className="container-flex button button-dark">
+      {children}
     </div>
   );
 }

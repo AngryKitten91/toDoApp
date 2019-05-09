@@ -1,16 +1,15 @@
 import React from "react";
 
-import "./Header.scss";
+import "./Task.scss";
 
 function Task(props) {
 
-  const {title, number, content} = props;
+  const {children, id} = props;
 
   return (
-    <div className="task">
-      <p>{`Task number: ${number}`}</p>
-      <p>{`Task title: ${title}`}</p>
-      <p>{`Task content: ${content}`}</p>
+    <div className="container container-flex-space-between task task-content">
+      <div>{`Task number: ${id + 1}`}</div>
+      <div className="">{children}</div>
     </div>
   );
 }

@@ -5,7 +5,9 @@ import "./App.scss";
 
 import Header from "components/Header";
 import Button from "components/Button";
-import Input from "components/Input"
+import Input from "components/Input";
+import Task from "components/Task";
+import ErrorBox from "components/ErrorBox";
 
 class App extends Component {
   constructor(props) {
@@ -14,70 +16,92 @@ class App extends Component {
     this.state = {
       items: [],
       title: "To Do App",
-      content: ''
+      content: "",
+      error: null
     };
   }
 
   handleClear = () => {
-    this.setState({ items: [] });
+    const { items } = this.state;
+
+    if (!items.length) {
+      const msg = "Please add some tasks first";
+      this.setState({ error: msg });
+    } else {
+      this.setState({ items: [] });
+    }
   };
 
   handleAdd = () => {
+    const { content } = this.state;
 
-    if (!this.state.content.length) {
-      return;
-    }
-    const newTask = {
-      value: this.state.content,
-    };
-
-    this.setState(prev => {
-      return {
-        items: [...prev.items, newTask],
-        content: ''
+    if (!content.length) {
+      const msg = "Please enter task name and try again";
+      this.setState({ error: msg });
+    } else {
+      const newTask = {
+        value: content
       };
-    });
+
+      this.setState(prev => {
+        return {
+          items: [...prev.items, newTask],
+          content: "",
+          error: null
+        };
+      });
+    }
   };
 
   handleRemove = () => {
-    this.setState(state => {
-      const tasks = state.items.filter((elem, i, array) => {
-        return i !== array.length - 1;
-      });
+    const { items } = this.state;
+    if (!items.length) {
+      const msg = "Please add new task";
+      this.setState({ error: msg });
+    } else {
+      this.setState(state => {
+        const tasks = state.items.filter((elem, i, array) => {
+          return i !== array.length - 1;
+        });
 
-      return {
-        items: tasks
-      };
-    });
+        return {
+          items: tasks,
+          error: null
+        };
+      });
+    }
   };
 
-  handleChange = (event) => {
+  handleChange = event => {
     this.setState({ content: event.target.value });
-  }
+  };
 
   render() {
-
-    const { title, items, content } = this.state;
-
-    const placehoderMsg = 'Placeholder';
+    const { title, items, content, error } = this.state;
 
     return (
       <>
         <div className="container-full container-dark">
           <Header title={title} />
           <div className="container container-flex">
-            <Button fn={this.handleAdd} name="Add" />
-            <Button fn={this.handleRemove} name="Remove" />
-            <Button fn={this.handleClear} name="Clear" />
-            </div>
-            <Input value={content} fn={this.handleChange}>{placehoderMsg}</Input>
+            <Button fn={this.handleAdd}>Add</Button>
+            <Button fn={this.handleRemove}>Remove Last</Button>
+            <Button fn={this.handleClear}>Clear All</Button>
+          </div>
+          <Input value={content} fn={this.handleChange}>
+            Please enter task name...
+          </Input>
         </div>
-        <div className="container">
+
+        {error && <ErrorBox value={error} />}
+
+        <div className="m-top-10 container">
           {items &&
             items.map((elem, i) => {
-              return <p key={i}>{elem.value}</p>;
+              return <Task id={i} key={i}>{elem.value}</Task>;
             })}
         </div>
+
       </>
     );
   }

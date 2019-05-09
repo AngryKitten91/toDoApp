@@ -1,0 +1,10 @@
+@import 'index.scss';
+
+.task {
+    padding: 20px;
+    border-bottom: 1px solid $color-purple;
+
+    &-content {
+        font-size: 25px;
+    }
+}
