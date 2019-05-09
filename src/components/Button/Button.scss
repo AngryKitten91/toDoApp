@@ -1,18 +1,21 @@
-.c {
-    &-button {
-        background-color: #4285f4;
-        padding: 10px 40px;
-        margin: 20px;
-        border-radius: 40px;
-        color: #fff;
-        box-sizing: border-box;
-        cursor: pointer;
-        text-transform: uppercase;
-        transition: 0.3s;
-        font-weight: 500;
+@import 'index.scss';
+
+.button {
+    box-sizing: border-box;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: 0.3s;
+    padding: 10px 40px;
+    margin: 20px;
+    border-radius: 40px;
+    font-weight: 500;
+
+    &-dark{
+        color: $color-white;
+        background-color: $color-lightBlue;
+    }
 
         &:hover{
-            background-color: #2277ff; 
+            background-color: darken( $color-lightBlue, 15% ); 
         }
     }
-}

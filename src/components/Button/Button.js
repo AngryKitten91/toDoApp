@@ -7,7 +7,7 @@ function Button(props) {
   const {name, fn} = props
   
   return (
-    <div onClick={fn} className="c-button">
+    <div onClick={fn} className="button button-dark">
       <p>{name}</p>
     </div>
   );

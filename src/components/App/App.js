@@ -5,13 +5,16 @@ import "./App.scss";
 
 import Header from "components/Header";
 import Button from "components/Button";
+import Input from "components/Input"
 
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      items: [1, 2, 3]
+      items: [],
+      title: "To Do App",
+      content: ''
     };
   }
 
@@ -20,11 +23,19 @@ class App extends Component {
   };
 
   handleAdd = () => {
+
+    if (!this.state.content.length) {
+      return;
+    }
+    const newTask = {
+      value: this.state.content,
+    };
+
     this.setState(prev => {
-      
-        return {
-          items: [...prev.items, "new"]
-        }
+      return {
+        items: [...prev.items, newTask],
+        content: ''
+      };
     });
   };
 
@@ -40,18 +51,33 @@ class App extends Component {
     });
   };
 
+  handleChange = (event) => {
+    this.setState({ content: event.target.value });
+  }
+
   render() {
+
+    const { title, items, content } = this.state;
+
+    const placehoderMsg = 'Placeholder';
+
     return (
       <>
-        <div className="c-container-full c-app__header">
-          <Header />
-          <div className="o-flex">
+        <div className="container-full container-dark">
+          <Header title={title} />
+          <div className="container container-flex">
             <Button fn={this.handleAdd} name="Add" />
             <Button fn={this.handleRemove} name="Remove" />
             <Button fn={this.handleClear} name="Clear" />
-          </div>
+            </div>
+            <Input value={content} fn={this.handleChange}>{placehoderMsg}</Input>
         </div>
-        <div className="c-container" />
+        <div className="container">
+          {items &&
+            items.map((elem, i) => {
+              return <p key={i}>{elem.value}</p>;
+            })}
+        </div>
       </>
     );
   }
