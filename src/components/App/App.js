@@ -55,7 +55,7 @@ class App extends Component {
 
   handleRemove = () => {
     const { items } = this.state;
-    
+
     if (!items.length) {
       const msg = "Please add new task";
       this.setState({ error: msg });

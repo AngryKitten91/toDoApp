@@ -1,7 +1,5 @@
 import React from "react";
 
-import "./ErrorBox.scss";
-
 function ErrorBox(props) {
   const { value } = props;
 
