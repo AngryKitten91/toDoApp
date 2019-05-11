@@ -36,6 +36,11 @@
         left: 0;
     }
 
+    &-top {
+        position: sticky;
+        top: 0;
+    }
+
     &-dark {
         background: $color-blue;
         background: linear-gradient(90deg, $color-blue 0%, $color-purple 100%);
