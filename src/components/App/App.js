@@ -55,6 +55,7 @@ class App extends Component {
 
   handleRemove = () => {
     const { items } = this.state;
+    
     if (!items.length) {
       const msg = "Please add new task";
       this.setState({ error: msg });
@@ -73,7 +74,14 @@ class App extends Component {
   };
 
   handleChange = event => {
-    this.setState({ content: event.target.value });
+    const { value } = event.target;
+
+    if (value.length >= 20) {
+      const msg = "Task name should contain maximum 20 characters";
+      this.setState({ error: msg });
+    } else {
+      this.setState({ content: event.target.value, error: null });
+    }
   };
 
   render() {
@@ -94,14 +102,25 @@ class App extends Component {
         </div>
 
         {error && <ErrorBox value={error} />}
-
+        {!items.length && (
+          <div className="container-full info container-flex">
+            <h2>
+              Get organized, Stay on track,
+              <br />
+              Add some tasks!
+            </h2>
+          </div>
+        )}
         <div className="m-top-10 container">
           {items &&
             items.map((elem, i) => {
-              return <Task id={i} key={i}>{elem.value}</Task>;
+              return (
+                <Task id={i} key={i}>
+                  {elem.value}
+                </Task>
+              );
             })}
         </div>
-
       </>
     );
   }

@@ -1,4 +1,3 @@
-$color-turquoise: #63CAB9;
 $color-red: #FE5858;
 $color-orange: #FFB548;
 $color-purple: #635D9D;
@@ -6,6 +5,10 @@ $color-lightBlue: #4285f4;
 $color-blue: #113A72;
 $color-white: #fff;
 $color-black: #000;
+
+#root {
+    height: 100vh;
+}
 
 body {
     font-family: "Open Sans";
@@ -15,3 +18,8 @@ h1 {
     margin: 20px;
 }
 
+h2 {
+    border-top: 1px solid $color-blue;
+    border-bottom: 1px solid $color-blue;
+    padding: 40px 0;
+}

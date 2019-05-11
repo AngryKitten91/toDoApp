@@ -3,8 +3,12 @@
 .task {
     padding: 20px;
     border-bottom: 1px solid $color-purple;
+    box-sizing: border-box;
 
     &-content {
         font-size: 25px;
+    }
+    &-number {
+        font-weight: 700;
     }
 }
